@@ -1,7 +1,7 @@
-
+import java.uitl.Arrays;
 
 public class ANN4CCN{
-	public static final double learningRate = 1;
+	public static final double learningRate = 0.2;
 
 	public static void main(String[] args){
 		int[] p1A = {1;6;9};
@@ -18,16 +18,25 @@ public class ANN4CCN{
 		Point p5 = new Point(0,p5A);
 		Point p6 = new Point(0,p6A);
 
+		ArrayList<Point> allPoints = new ArrayList<Point>();
+		allPoints.add(p1);
+		allPoints.add(p2);
+		allPoints.add(p3);
+		allPoints.add(p4);
+		allPoints.add(p5);
+		allPoints.add(p6);
+
 		double[] omega = new double[2];
 		for(int i = 0; i<omega.legnth; i++){
 			omega[i] = Math.random();
 		}
 	}
 
-	public double[] update(double[] omega, Point point){
+	public double[] update(double[] omega, Point point, double output){
 		for(int i = 0; i<omega.length; i++){
-			omega[i] = omega[i] + learningRate * point.getD() * point.getVectorValue(i);
+			omega[i] = omega[i] + learningRate * (point.getTarget() - point.getOutput()) * point.getVectorValue(i);
 		}
+		System.out.println(omega.toString());
 	}
 
 	public double dotProduct(double[] omega, int[] pointVector){
