@@ -1,7 +1,9 @@
 public class Point{
-	int target = 0;
-	int[] vector = new int[2];
+	int target;
+	int[] vector;
 	double output = 0;
+	boolean classified = false;
+
 
 	public Point(int target, int[] vector){
 		this.target = target;
@@ -25,5 +27,12 @@ public class Point{
 	}
 	public int getVectorValue(int x){
 		return vector[x];
+	}
+
+	public boolean getClassified(){
+		return classified;
+	}
+	public void setClassified(boolean x){
+		classified = x;
 	}
 }
