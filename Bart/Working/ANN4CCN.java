@@ -10,7 +10,7 @@ public class ANN4CCN{
 		int[] p1A = {1,6,9};
 		int[] p2A = {1,1,8};
 		int[] p3A = {1,-4,2};
-		int[] p4A = {1,-1,-1};
+		int[] p4A = {1,0,-2};
 		int[] p5A = {1,-3,-4};
 		int[] p6A = {1,7,2};
 
@@ -36,13 +36,16 @@ public class ANN4CCN{
 
 		int iterations = 0;
 
-		System.out.println(Arrays.toString(omega));
+		System.out.println();
+		System.out.println("Original:");
+		System.out.println("weight		1			2			3");
+		System.out.println("value	" + omega[0] + "	" + omega[1] + "	" + omega[2]);
+		System.out.println(omega[1] + "x + " + omega[2] + "y = " + (0 - omega[0]));
 
 		while(!convergence){
 			for(int i = 0; i < allPoints.size(); i++){
 				Point p = allPoints.get(i);
 				p.setOutput(dotProduct(omega, p.getVector()));
-				System.out.println("Output for " + i + ": " + p.getOutput());
 			}
 			for(int i = 0; i < allPoints.size(); i++){
 				Point p = allPoints.get(i);
@@ -54,8 +57,11 @@ public class ANN4CCN{
 					p.setClassified(true);
 				}
 			}
-			iterations++;
-			System.out.println(Arrays.toString(omega));
+			System.out.println();
+			System.out.println("Iterations " + ++iterations + ":");
+			System.out.println("weight		1			2			3");
+			System.out.println("value	" + omega[0] + "	" + omega[1] + "	" + omega[2]);
+			System.out.println(omega[1] + "x + " + omega[2] + "y = " + (0 - omega[0]));
 
 			for(int i = 0; i < allPoints.size(); i++){
 				Point p = allPoints.get(i);
@@ -66,10 +72,13 @@ public class ANN4CCN{
 					convergence = true;
 				}
 			}
+
 		}
 
-		System.out.println("Total Iterations: " + iterations);
-		System.out.println("Final weights: " + Arrays.toString(omega));
+		System.out.println();
+		//System.out.println("Total Iterations: " + iterations);
+		//System.out.println("Final weights: " + Arrays.toString(omega));
+		//System.out.println();
 
 
 	}

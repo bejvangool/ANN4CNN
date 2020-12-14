@@ -18,7 +18,7 @@ public class ANN4CCN{
 		Point p3 = new Point(0,p3A);
 		Point p4 = new Point(0,p4A);
 
-		ArrayList<Point> allPoints = new ArrayList<Point>();
+		ArrayList<Point> allPoints = new ArrayList<>();
 		allPoints.add(p1);
 		allPoints.add(p2);
 		allPoints.add(p3);
@@ -79,9 +79,13 @@ public class ANN4CCN{
 
 	public static int dotProduct(int[] omega, int[] pointVector){
 		int total = 0;
+
+		//Dot product
 		for(int i = 0; i<omega.length; i++){
 			total += omega[i]*pointVector[i];
 		}
+
+		//Stepfunction
 		if (total <= 0){
 			return 0;
 		}
