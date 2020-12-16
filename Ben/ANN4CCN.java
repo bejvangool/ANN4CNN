@@ -1,93 +1,148 @@
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.*;
 
 public class ANN4CCN{
-	public static final double LEARNING_RATE = 0.2;
-	public static double[] omega = new double[3];
+	public static final double LEARNING_RATE = 0.0001;
+	//public static int[] omega = new int[3];
+	public static double[] omega = {Math.random(),Math.random(),-1};
 	public static boolean convergence = false;
+	public static ArrayList<Point> allPoints = new ArrayList<>();
+	public static int TARGET_VALUES=100;
+
+
 
 	public static void main(String[] args){
-		int[] p1A = {1,6,9};
-		int[] p2A = {1,1,8};
-		int[] p3A = {1,-4,2};
-		int[] p4A = {1,-1,-1};
-		int[] p5A = {1,-3,-4};
-		int[] p6A = {1,7,2};
+		createValues();
 
-		Point p1 = new Point(1,p1A);
-		Point p2 = new Point(1,p2A);
-		Point p3 = new Point(1,p3A);
-		Point p4 = new Point(0,p4A);
-		Point p5 = new Point(0,p5A);
-		Point p6 = new Point(0,p6A);
+	int iterations = 0;
 
-		ArrayList<Point> allPoints = new ArrayList<Point>();
-		allPoints.add(p1);
-		allPoints.add(p2);
-		allPoints.add(p3);
-		allPoints.add(p4);
-		allPoints.add(p5);
-		allPoints.add(p6);
+	System.out.println(Arrays.toString(omega));
 
-		//Initializing omega with random values
-		for(int i = 0; i<omega.length; i++){
-			omega[i] = Math.random();
+	for(int i = 0; i < allPoints.size(); i++){
+		Point p = allPoints.get(i);
+		p.setOutput(dotProduct(omega, p.getVector()));
+		boolean b = p.getOutput() == p.getTarget();
 		}
 
-		int iterations = 0;
 
-		System.out.println(Arrays.toString(omega));
-
-		while(!convergence){
-			for(int i = 0; i < allPoints.size(); i++){
-				Point p = allPoints.get(i);
-				p.setOutput(dotProduct(omega, p.getVector()));
-				System.out.println("Output for " + i + ": " + p.getOutput());
-			}
-			for(int i = 0; i < allPoints.size(); i++){
-				Point p = allPoints.get(i);
-				if(p.getTarget() != p.getOutput()){
-					p.setClassified(false);
-					update(omega, p);
-				}
-				else{
-					p.setClassified(true);
-				}
-			}
-			iterations++;
-			System.out.println(Arrays.toString(omega));
-
-			for(int i = 0; i < allPoints.size(); i++){
-				Point p = allPoints.get(i);
-				if(p.getClassified() == false){
-					break;
-				}
-				if(i == allPoints.size()-1){
-					convergence = true;
-				}
-			}
+	for(int i = 0; i < allPoints.size(); i++){
+		Point p = allPoints.get(i);
+		if(p.getClassified() == false){
+			break;
 		}
-
-		System.out.println("Total Iterations: " + iterations);
-		System.out.println("Final weights: " + Arrays.toString(omega));
-
-
-	}
-
-	public static void update(double[] omega, Point point){
-		for(int i = 0; i<omega.length; i++){
-			omega[i] = omega[i] + LEARNING_RATE * (point.getTarget() - point.getOutput()) * point.getVectorValue(i);
+		if(i == allPoints.size()-1){
+			convergence = true;
 		}
 	}
 
-	public static double dotProduct(double[] omega, int[] pointVector){
-		double total = 0;
-		for(int i = 0; i<omega.length; i++){
-			total += omega[i]*pointVector[i];
+
+
+	while(!convergence){
+		for(int i = 0; i < allPoints.size(); i++){
+			Point p = allPoints.get(i);
+			p.setOutput(dotProduct(omega, p.getVector()));
+
 		}
-		if (total < 0){
-			return 0;
+		for(int i = 0; i < allPoints.size(); i++){
+			Point p = allPoints.get(i);
+			if(p.getTarget() != p.getOutput()){
+				p.setClassified(false);
+				update(omega, p);
+			}
+			else{
+				p.setClassified(true);
+			}
 		}
-		return 1;
+		iterations++;
+
+		for(int i = 0; i < allPoints.size(); i++){
+			Point p = allPoints.get(i);
+			if(p.getClassified() == false){
+				break;
+			}
+			if(i == allPoints.size()-1){
+				convergence = true;
+			}
+		}
 	}
+	System.out.println();
+	System.out.println("Iterations: " + iterations);
+	System.out.println("weight		1				2				 3");
+	System.out.println("value      	" + omega[0] + "	        " + omega[1] + "              " + omega[2]);
+	//System.out.println(omega[1] + "x + " + omega[2] + "y = " + (0 - omega[0]));
+	System.out.println(-omega[2] + "y = " + omega[1] + "x + " + omega[0]);
+	System.out.println();
+
+
+
+}
+
+public static void update(double[] omega, Point point){
+	for(int i = 0; i<omega.length; i++){
+		if(i == 2){break;}
+		omega[i] = omega[i] + LEARNING_RATE * (point.getTarget() - point.getOutput()) * point.getVectorValue(i);
+	}
+	//System.out.println();
+	//System.out.println("weight		1			2			3");
+	//System.out.println("value       	" + omega[0] + "	          " + omega[1] + "              	" + omega[2]);
+}
+
+public static int dotProduct(double[] omega, double[] pointVector){
+	int total = 0;
+	for(int i = 0; i<omega.length; i++){
+		total += omega[i]*pointVector[i];
+	}
+	if (total <= 0){
+		return 0;
+	}
+	return 1;
+}
+
+
+public static void createValues(){
+	Random rnd = new Random();
+	ArrayList<double[]> allVectors= new ArrayList<>();
+	int aboveCount=0;
+	int underCount=0;
+	//for (int j=0; j<omegaTemp.length ;j++) {
+	/*	double [] omegaTemp = new double [omega.length];
+	omegaTemp[j] = rnd.nextInt();
+}*/
+for (int i=0; i<TARGET_VALUES	; i++){
+
+	while(allVectors.size()<TARGET_VALUES){
+
+		double [] vector = {1, (int)(Math.random() * (10 + 10 + 1) -10), (int)(Math.random() * (10 + 10 + 1) -10)};
+		if (allVectors.contains(vector)) { continue; }
+
+		if(vector[2]< 2*vector[1] + 1){//if the point is over the line
+			if(aboveCount==TARGET_VALUES/2){continue;}
+
+			allPoints.add(new Point(1,vector));
+			allVectors.add(vector);
+			aboveCount++;
+			System.out.println(Arrays.toString(vector) + "	  	1");
+			break;
+		}
+
+		else if (vector[2]> 2*vector[1] + 1){
+			if(underCount==TARGET_VALUES/2){continue;}
+			allPoints.add(new Point(0,vector));
+			allVectors.add(vector);
+			underCount++;
+			System.out.println(Arrays.toString(vector) + "	  	0");
+			break;
+		}
+		else if(vector[2]== 2*vector[1] + 1){
+			continue;
+		}
+	}
+
+}
+
+
+
+
+}
 }

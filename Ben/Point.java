@@ -1,11 +1,11 @@
 public class Point{
 	int target;
-	int[] vector;
-	double output = 0;
+	double[] vector;
+	int output = 0;
 	boolean classified = false;
 
 
-	public Point(int target, int[] vector){
+	public Point(int target, double[] vector){
 		this.target = target;
 		this.vector = vector;
 	}
@@ -14,18 +14,18 @@ public class Point{
 		return target;
 	}
 
-	public void setOutput(double output){
+	public void setOutput(int output){
 		this.output = output;
 	}
 
-	public double getOutput(){
+	public int getOutput(){
 		return output;
 	}
 
-	public int[] getVector(){
+	public double[] getVector(){
 		return vector;
 	}
-	public int getVectorValue(int x){
+	public double getVectorValue(int x){
 		return vector[x];
 	}
 
