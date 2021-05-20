@@ -1,0 +1,1 @@
+/Applications/Postgres.app/Contents/Versions/13/bin/postgres "-D" "/Users/bartvangool/Documents/GitHub/ANN4CNN/PIZZA/database" "-p" "5432"

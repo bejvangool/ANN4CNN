@@ -1,0 +1,62 @@
+2021-05-19 16:43:32.161 CEST [44242] LOG:  starting PostgreSQL 13.3 on x86_64-apple-darwin19.6.0, compiled by Apple clang version 11.0.3 (clang-1103.0.32.62), 64-bit
+2021-05-19 16:43:32.164 CEST [44242] LOG:  listening on IPv6 address "::1", port 5432
+2021-05-19 16:43:32.164 CEST [44242] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-05-19 16:43:32.165 CEST [44242] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-05-19 16:43:32.171 CEST [44243] LOG:  database system was shut down at 2021-05-19 16:43:31 CEST
+2021-05-19 16:43:32.182 CEST [44242] LOG:  database system is ready to accept connections
+2021-05-19 16:45:41.051 CEST [44265] ERROR:  relation "pizza" does not exist
+2021-05-19 16:45:41.051 CEST [44265] STATEMENT:  GRANT ALL PRIVILEGES ON "pizza" TO bartvangool;
+2021-05-19 16:46:19.769 CEST [44265] ERROR:  relation "pizza" does not exist
+2021-05-19 16:46:19.769 CEST [44265] STATEMENT:  GRANT ALL PRIVILEGES ON "pizza" TO bartvangool;
+2021-05-19 17:26:00.541 CEST [44676] ERROR:  relation "pizza_toppings" does not exist
+2021-05-19 17:26:00.541 CEST [44676] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-19 17:54:23.165 CEST [45014] ERROR:  relation "pizza_toppings" does not exist
+2021-05-19 17:54:23.165 CEST [45014] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-19 18:04:04.398 CEST [45159] ERROR:  relation "pizza_toppings" does not exist
+2021-05-19 18:04:04.398 CEST [45159] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-20 14:22:10.492 CEST [44242] LOG:  received fast shutdown request
+2021-05-20 14:22:10.492 CEST [44242] LOG:  aborting any active transactions
+2021-05-20 14:22:10.495 CEST [44242] LOG:  background worker "logical replication launcher" (PID 44249) exited with exit code 1
+2021-05-20 14:22:10.495 CEST [44244] LOG:  shutting down
+2021-05-20 14:22:10.507 CEST [44242] LOG:  database system is shut down
+2021-05-20 20:01:12.696 CEST [52454] LOG:  starting PostgreSQL 13.3 on x86_64-apple-darwin19.6.0, compiled by Apple clang version 11.0.3 (clang-1103.0.32.62), 64-bit
+2021-05-20 20:01:12.699 CEST [52454] LOG:  listening on IPv6 address "::1", port 5432
+2021-05-20 20:01:12.699 CEST [52454] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-05-20 20:01:12.699 CEST [52454] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-05-20 20:01:12.713 CEST [52455] LOG:  database system was shut down at 2021-05-20 14:22:10 CEST
+2021-05-20 20:01:12.718 CEST [52454] LOG:  database system is ready to accept connections
+2021-05-20 20:01:59.063 CEST [52486] ERROR:  relation "pizza_toppings" does not exist
+2021-05-20 20:01:59.063 CEST [52486] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-20 20:43:31.377 CEST [52734] ERROR:  relation "pizza_toppings" does not exist
+2021-05-20 20:43:31.377 CEST [52734] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-20 20:43:41.724 CEST [52454] LOG:  received fast shutdown request
+2021-05-20 20:43:41.725 CEST [52454] LOG:  aborting any active transactions
+2021-05-20 20:43:41.725 CEST [52742] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.725 CEST [52741] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.725 CEST [52738] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.725 CEST [52736] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.725 CEST [52735] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.725 CEST [52734] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.725 CEST [52743] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.725 CEST [52740] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.725 CEST [52737] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.725 CEST [52739] FATAL:  terminating connection due to administrator command
+2021-05-20 20:43:41.727 CEST [52454] LOG:  background worker "logical replication launcher" (PID 52461) exited with exit code 1
+2021-05-20 20:43:41.729 CEST [52456] LOG:  shutting down
+2021-05-20 20:43:41.745 CEST [52454] LOG:  database system is shut down
+2021-05-20 20:44:34.358 CEST [52771] LOG:  starting PostgreSQL 13.3 on x86_64-apple-darwin19.6.0, compiled by Apple clang version 11.0.3 (clang-1103.0.32.62), 64-bit
+2021-05-20 20:44:34.361 CEST [52771] LOG:  listening on IPv6 address "::1", port 5432
+2021-05-20 20:44:34.361 CEST [52771] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-05-20 20:44:34.362 CEST [52771] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-05-20 20:44:34.368 CEST [52772] LOG:  database system was shut down at 2021-05-20 20:43:41 CEST
+2021-05-20 20:44:34.375 CEST [52771] LOG:  database system is ready to accept connections
