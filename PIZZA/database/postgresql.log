@@ -60,3 +60,90 @@
 2021-05-20 20:44:34.362 CEST [52771] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2021-05-20 20:44:34.368 CEST [52772] LOG:  database system was shut down at 2021-05-20 20:43:41 CEST
 2021-05-20 20:44:34.375 CEST [52771] LOG:  database system is ready to accept connections
+2021-05-20 22:05:23.263 CEST [53990] ERROR:  relation "pizza_toppings" does not exist
+2021-05-20 22:05:23.263 CEST [53990] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-20 22:06:14.258 CEST [54018] ERROR:  relation "pizza_toppings" does not exist
+2021-05-20 22:06:14.258 CEST [54018] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-20 22:15:35.060 CEST [54200] ERROR:  relation "pizza_toppings" does not exist
+2021-05-20 22:15:35.060 CEST [54200] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-20 22:22:49.305 CEST [54331] ERROR:  relation "order_pizzas" does not exist
+2021-05-20 22:22:49.305 CEST [54331] STATEMENT:  
+	    alter table order_pizzas 
+	       drop constraint FK9a81w3xkrgqnvrlo9nu5dkm4s
+2021-05-20 22:22:49.310 CEST [54331] ERROR:  relation "pizza_toppings" does not exist
+2021-05-20 22:22:49.310 CEST [54331] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-20 22:22:49.313 CEST [54331] ERROR:  syntax error at or near "order" at character 27
+2021-05-20 22:22:49.313 CEST [54331] STATEMENT:  
+	    drop table if exists order cascade
+2021-05-20 22:22:49.326 CEST [54331] ERROR:  syntax error at or near "order" at character 19
+2021-05-20 22:22:49.326 CEST [54331] STATEMENT:  
+	    create table order (
+	       order_id int8 not null,
+	        customer_id int8,
+	        ordered_at date,
+	        payment_type varchar(255),
+	        status varchar(255),
+	        takeaway boolean not null,
+	        primary key (order_id)
+	    )
+2021-05-20 22:22:49.333 CEST [54331] ERROR:  syntax error at or near "order" at character 138
+2021-05-20 22:22:49.333 CEST [54331] STATEMENT:  
+	    alter table order_pizzas 
+	       add constraint FK9a81w3xkrgqnvrlo9nu5dkm4s 
+	       foreign key (order_order_id) 
+	       references order
+2021-05-21 18:32:55.922 CEST [56568] ERROR:  constraint "fk9a81w3xkrgqnvrlo9nu5dkm4s" of relation "order_pizzas" does not exist
+2021-05-21 18:32:55.922 CEST [56568] STATEMENT:  
+	    alter table order_pizzas 
+	       drop constraint FK9a81w3xkrgqnvrlo9nu5dkm4s
+2021-05-21 18:32:55.927 CEST [56568] ERROR:  syntax error at or near "order" at character 27
+2021-05-21 18:32:55.927 CEST [56568] STATEMENT:  
+	    drop table if exists order cascade
+2021-05-21 18:33:02.539 CEST [56845] ERROR:  relation "order_pizzas" does not exist
+2021-05-21 18:33:02.539 CEST [56845] STATEMENT:  
+	    alter table order_pizzas 
+	       drop constraint FK9a81w3xkrgqnvrlo9nu5dkm4s
+2021-05-21 18:33:02.543 CEST [56845] ERROR:  relation "pizza_toppings" does not exist
+2021-05-21 18:33:02.543 CEST [56845] STATEMENT:  
+	    alter table pizza_toppings 
+	       drop constraint FKjsa8kkk3vgfivw5h4emb8dk6y
+2021-05-21 18:33:02.545 CEST [56845] ERROR:  syntax error at or near "order" at character 27
+2021-05-21 18:33:02.545 CEST [56845] STATEMENT:  
+	    drop table if exists order cascade
+2021-05-21 18:33:02.557 CEST [56845] ERROR:  syntax error at or near "order" at character 19
+2021-05-21 18:33:02.557 CEST [56845] STATEMENT:  
+	    create table order (
+	       order_id int8 not null,
+	        customer_id int8,
+	        ordered_at date,
+	        payment_type varchar(255),
+	        status varchar(255),
+	        takeaway boolean not null,
+	        primary key (order_id)
+	    )
+2021-05-21 18:33:02.564 CEST [56845] ERROR:  syntax error at or near "order" at character 138
+2021-05-21 18:33:02.564 CEST [56845] STATEMENT:  
+	    alter table order_pizzas 
+	       add constraint FK9a81w3xkrgqnvrlo9nu5dkm4s 
+	       foreign key (order_order_id) 
+	       references order
+2021-05-21 19:22:34.957 CEST [57181] ERROR:  constraint "fk9a81w3xkrgqnvrlo9nu5dkm4s" of relation "order_pizzas" does not exist
+2021-05-21 19:22:34.957 CEST [57181] STATEMENT:  
+	    alter table order_pizzas 
+	       drop constraint FK9a81w3xkrgqnvrlo9nu5dkm4s
+2021-05-21 19:22:34.961 CEST [57181] ERROR:  syntax error at or near "order" at character 27
+2021-05-21 19:22:34.961 CEST [57181] STATEMENT:  
+	    drop table if exists order cascade
+2021-05-22 11:03:36.465 CEST [52771] LOG:  received fast shutdown request
+2021-05-22 11:03:36.466 CEST [52771] LOG:  aborting any active transactions
+2021-05-22 11:03:36.468 CEST [52771] LOG:  background worker "logical replication launcher" (PID 52778) exited with exit code 1
+2021-05-22 11:03:36.469 CEST [52773] LOG:  shutting down
+2021-05-22 11:03:36.481 CEST [52771] LOG:  database system is shut down

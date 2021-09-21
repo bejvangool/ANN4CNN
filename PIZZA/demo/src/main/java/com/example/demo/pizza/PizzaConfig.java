@@ -10,7 +10,7 @@ import java.util.List;
 public class PizzaConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(PizzaRepository repository) {
+    CommandLineRunner commandLineRunnerPizza(PizzaRepository repository) {
         return args -> {
             Pizza margherita = new Pizza(
                     "Margherita",

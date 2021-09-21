@@ -15,40 +15,39 @@ public class Order {
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "pizza_sequence"
+            generator = "order_sequence"
     )
 
     private Long order_id;
     private Long customer_id;
     private String status;
-    private LocalDate odered_at;
+    private LocalDate ordered_at;
     private boolean takeaway;
     private String payment_type;
-    private Address delivery_address;
     @ElementCollection
-    private List<Pizza> pizzas;
+    private List<Long> pizzas;
 
     public Order() {
     }
 
-    public Order(Long order_id, Long customer_id, String status, LocalDate odered_at, boolean takeaway, String payment_type, Address delivery_address, List<Pizza> pizzas) {
+    public Order(Long order_id, Long customer_id, String status, boolean takeaway, String payment_type, List<Long> pizzas) {
         this.order_id = order_id;
         this.customer_id = customer_id;
         this.status = status;
-        this.odered_at = odered_at;
+        this.ordered_at = LocalDate.now();
         this.takeaway = takeaway;
         this.payment_type = payment_type;
-        this.delivery_address = delivery_address;
+        //this.delivery_address = delivery_address;
         this.pizzas = pizzas;
     }
 
-    public Order(Long customer_id, String status, LocalDate odered_at, boolean takeaway, String payment_type, Address delivery_address, List<Pizza> pizzas) {
+    public Order(Long customer_id, String status, boolean takeaway, String payment_type, List<Long> pizzas) {
         this.customer_id = customer_id;
         this.status = status;
-        this.odered_at = odered_at;
+        this.ordered_at = LocalDate.now();
         this.takeaway = takeaway;
         this.payment_type = payment_type;
-        this.delivery_address = delivery_address;
+        //this.delivery_address = delivery_address;
         this.pizzas = pizzas;
     }
 
@@ -76,12 +75,12 @@ public class Order {
         this.status = status;
     }
 
-    public LocalDate getOdered_at() {
-        return odered_at;
+    public LocalDate getOrdered_at() {
+        return ordered_at;
     }
 
-    public void setOdered_at(LocalDate odered_at) {
-        this.odered_at = odered_at;
+    public void setOrdered_at(LocalDate odered_at) {
+        this.ordered_at = odered_at;
     }
 
     public boolean isTakeaway() {
@@ -100,19 +99,19 @@ public class Order {
         this.payment_type = payment_type;
     }
 
-    public Address getDelivery_address() {
-        return delivery_address;
-    }
+//    public Address getDelivery_address() {
+//        return delivery_address;
+//    }
+//
+//    public void setDelivery_address(Address delivery_address) {
+//        this.delivery_address = delivery_address;
+//    }
 
-    public void setDelivery_address(Address delivery_address) {
-        this.delivery_address = delivery_address;
-    }
-
-    public List<Pizza> getPizzas() {
+    public List<Long> getPizzas() {
         return pizzas;
     }
 
-    public void setPizzas(List<Pizza> pizzas) {
+    public void setPizzas(List<Long> pizzas) {
         this.pizzas = pizzas;
     }
 
@@ -122,10 +121,9 @@ public class Order {
                 "order_id=" + order_id +
                 ", customer_id=" + customer_id +
                 ", status='" + status + '\'' +
-                ", odered_at=" + odered_at +
+                ", ordered_at=" + ordered_at +
                 ", takeaway=" + takeaway +
                 ", payment_type='" + payment_type + '\'' +
-                ", delivery_address=" + delivery_address +
                 ", pizzas=" + pizzas +
                 '}';
     }

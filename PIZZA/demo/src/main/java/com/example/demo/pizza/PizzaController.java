@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "api/v1/pizza")
+@RequestMapping(path = "api/pizza")
 public class PizzaController {
 
     private final PizzaService pizzaService;
@@ -24,5 +24,4 @@ public class PizzaController {
         return pizzaService.getPizza();
     }
 
-    public void orderNewPizza()
 }
